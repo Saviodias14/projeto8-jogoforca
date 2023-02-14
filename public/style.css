@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.jogo {
+    background-color: brown;
+    width: 100vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 59px 43px 0 39px;
+}
+
+.jogo img {
+    width: 400px;
+    height: 467px;
+}
+
+.jogo div button {
+    background-color: #27AE60;
+    color: #fff;
+    font-family: 'roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    width: 200px;
+    height: 60px;
+    margin: 30px 10px;
+}
+
+.jogo div p {
+    color: #000;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 68px;
+    margin-top: 252px;
+}
