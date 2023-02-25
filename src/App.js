@@ -39,7 +39,7 @@ export default function App() {
     setPalavraEscolhida(novaPalavra)
     setPalavraEscolhidaCriptografada(exibe(novaPalavra))
   }
-  
+
   function underline(palavra) {
     let palavraExibida = []
     for (let i = 0; i < palavra.length; i++) {
@@ -52,29 +52,53 @@ export default function App() {
   function exibe(palavra) {
     let palavraExibida = ''
     for (let i = 0; i < palavra.length; i++) {
-      palavraExibida = palavraExibida+' '+palavra[i]
+      palavraExibida = palavraExibida + ' ' + palavra[i]
     }
     console.log(palavra)
     return palavraExibida
   }
 
-function mudaPalavra() {
-  if (palavraSorteada.includes(letrasUsadas)) {
-    let arrayDaPalavra = palavraEscolhida
-    for (let i = 0; i < palavraEscolhida.length; i++) {
-      if (palavraSorteada[i] === letrasUsadas) {
-        arrayDaPalavra[i] = letrasUsadas
+  function mudaPalavra(letraUsada) {
+    if (palavraSorteada.includes(letraUsada)) {
+      let arrayDaPalavra = palavraEscolhida
+      for (let i = 0; i < palavraEscolhida.length; i++) {
+        if (palavraSorteada[i] === letraUsada) {
+          arrayDaPalavra[i] = letraUsada
+        }
+      }
+      return exibe(arrayDaPalavra)
+    } else {
+      switch (erros) {
+        case forca0:
+          setErros(forca1)
+          break
+        case forca1:
+          setErros(forca2)
+          break
+        case forca2:
+          setErros(forca3)
+          break
+        case forca3:
+          setErros(forca4)
+          break
+        case forca4:
+          setErros(forca5)
+          break
+        case forca5:
+          setErros(forca6)
+          break
+        default:
+          break
       }
     }
-    return exibe(arrayDaPalavra)
-  }
-  return palavraEscolhidaCriptografada
-}
 
-return (
-  <div>
-    <Jogo iniciaJogo={iniciaJogo} imagem={erros} palavraEscolhida={palavraEscolhidaCriptografada} />
-    <Letras arrayDeLetras={alfabeto} habilitaBotao={habilitaBotao} setHabilitaBotao={setHabilitaBotao} setLetrasUsadas={setLetrasUsadas} mudaPalavra={mudaPalavra()} setPalavraEscolhidaCriptografada={setPalavraEscolhidaCriptografada} />
-  </div>
-);
+    return palavraEscolhidaCriptografada
+  }
+
+  return (
+    <div>
+      <Jogo iniciaJogo={iniciaJogo} imagem={erros} palavraEscolhida={palavraEscolhidaCriptografada} />
+      <Letras arrayDeLetras={alfabeto} habilitaBotao={habilitaBotao} setHabilitaBotao={setHabilitaBotao} setLetrasUsadas={setLetrasUsadas} mudaPalavra={mudaPalavra} setPalavraEscolhidaCriptografada={setPalavraEscolhidaCriptografada} />
+    </div>
+  );
 }
