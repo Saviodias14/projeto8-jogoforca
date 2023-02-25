@@ -4,7 +4,7 @@ export default function Jogo(props) {
             <img src={props.imagem} alt="Imagem da forca"/>
             <div>
                 <button onClick={props.iniciaJogo}>Escolher Palavra</button>
-                <p>{props.palavraEscolhida}</p>
+                <p className={props.fimDeJogo}>{props.palavraEscolhida}</p>
             </div>
         </div>
     )

@@ -12,7 +12,6 @@ export default function Letras(props) {
                 {props.arrayDeLetras.map((l, i) => <li key={l}><button
                     onClick={() => {
                         props.setHabilitaBotao(desabilitaLetra(props.habilitaBotao, i))
-                        props.setLetrasUsadas(l)
                         props.setPalavraEscolhidaCriptografada(props.mudaPalavra(l))
                     }}
                     className={props.habilitaBotao[i] ? 'disabled' : 'abled'}

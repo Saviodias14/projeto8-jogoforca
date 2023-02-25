@@ -26,9 +26,9 @@ export default function App() {
   const [palavraEscolhida, setPalavraEscolhida] = useState([])
   const [palavraEscolhidaCriptografada, setPalavraEscolhidaCriptografada] = useState('')
   const [habilitaBotao, setHabilitaBotao] = useState(arrayDeClasses(26, true))
-  const [letrasUsadas, setLetrasUsadas] = useState('')
   const [erros, setErros] = useState(forca0)
   const [palavraSorteada, setPalavraSorteada] = useState('')
+  const [fimDeJogo, setFimDeJogo] = useState('')
 
 
   function iniciaJogo() {
@@ -38,6 +38,8 @@ export default function App() {
     let novaPalavra = underline(sorteio)
     setPalavraEscolhida(novaPalavra)
     setPalavraEscolhidaCriptografada(exibe(novaPalavra))
+    setErros(forca0)
+    setFimDeJogo('')
   }
 
   function underline(palavra) {
@@ -59,6 +61,7 @@ export default function App() {
   }
 
   function mudaPalavra(letraUsada) {
+    let corDaPalavra
     if (palavraSorteada.includes(letraUsada)) {
       let arrayDaPalavra = palavraEscolhida
       for (let i = 0; i < palavraEscolhida.length; i++) {
@@ -66,8 +69,19 @@ export default function App() {
           arrayDaPalavra[i] = letraUsada
         }
       }
+      if(!arrayDaPalavra.includes('_')){
+        corDaPalavra='verde'
+        setFimDeJogo(corDaPalavra)
+        setHabilitaBotao(arrayDeClasses(26, true))
+      }
       return exibe(arrayDaPalavra)
     } else {
+      let imagem = erros
+      if(imagem===forca5){
+        corDaPalavra='vermelho'
+        setFimDeJogo(corDaPalavra)
+        setHabilitaBotao(arrayDeClasses(26, true))
+      }
       switch (erros) {
         case forca0:
           setErros(forca1)
@@ -91,14 +105,16 @@ export default function App() {
           break
       }
     }
-
+    if(corDaPalavra==='vermelho'){
+      return palavraSorteada
+    }
     return palavraEscolhidaCriptografada
   }
 
   return (
     <div>
-      <Jogo iniciaJogo={iniciaJogo} imagem={erros} palavraEscolhida={palavraEscolhidaCriptografada} />
-      <Letras arrayDeLetras={alfabeto} habilitaBotao={habilitaBotao} setHabilitaBotao={setHabilitaBotao} setLetrasUsadas={setLetrasUsadas} mudaPalavra={mudaPalavra} setPalavraEscolhidaCriptografada={setPalavraEscolhidaCriptografada} />
+      <Jogo iniciaJogo={iniciaJogo} imagem={erros} palavraEscolhida={palavraEscolhidaCriptografada} fimDeJogo={fimDeJogo} />
+      <Letras arrayDeLetras={alfabeto} habilitaBotao={habilitaBotao} setHabilitaBotao={setHabilitaBotao} mudaPalavra={mudaPalavra} setPalavraEscolhidaCriptografada={setPalavraEscolhidaCriptografada} />
     </div>
   );
 }
