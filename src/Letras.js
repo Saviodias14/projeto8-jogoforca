@@ -9,7 +9,7 @@ export default function Letras(props) {
     return (
         <div className="letras">
             <ul>
-                {props.arrayDeLetras.map((l, i) => <li key={l}><button
+                {props.arrayDeLetras.map((l, i) => <li key={l}><button data-test='letter'
                     onClick={() => {
                         props.setHabilitaBotao(desabilitaLetra(props.habilitaBotao, i))
                         props.setPalavraEscolhidaCriptografada(props.mudaPalavra(l))
