@@ -14,7 +14,7 @@ export default function Chute(props) {
     return (
         <div className="chutar">
             <p>Já sei a palavra!</p>
-            <input dta-test="guess-input" name="chute" value={palavraDoInput} onChange={pegaPalavra} disabled={props.habilitaBotao.includes(false)?false:true}></input>
+            <input data-test="guess-input" name="chute" value={palavraDoInput} onChange={pegaPalavra} disabled={props.habilitaBotao.includes(false)?false:true}></input>
             <button data-test="guess-button" onClick={()=>{
                 setPalavraDoInput('')
                 props.setPalavraEscolhidaCriptografada(props.palavraChutada(palavraDoInput))}}>Chutar</button>
