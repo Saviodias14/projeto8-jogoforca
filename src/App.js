@@ -12,6 +12,7 @@ import forca5 from './assets/forca5.png'
 import forca6 from './assets/forca6.png'
 import sorteiaPalavra from "./palavraAleatoria";
 import palavraParaArray from "./palavraParaArray";
+import Chute from "./Chute";
 
 function arrayDeClasses(length, bool) {
   let novoArray = []
@@ -41,6 +42,7 @@ export default function App() {
     setErros(forca0)
     setFimDeJogo('')
   }
+  
 
   function underline(palavra) {
     let palavraExibida = []
@@ -61,6 +63,7 @@ export default function App() {
   }
 
   function mudaPalavra(letraUsada) {
+    console.log(palavraSorteada)
     let corDaPalavra
     if (palavraSorteada.includes(letraUsada)) {
       let arrayDaPalavra = palavraEscolhida
@@ -69,16 +72,16 @@ export default function App() {
           arrayDaPalavra[i] = letraUsada
         }
       }
-      if(!arrayDaPalavra.includes('_')){
-        corDaPalavra='verde'
+      if (!arrayDaPalavra.includes('_')) {
+        corDaPalavra = 'verde'
         setFimDeJogo(corDaPalavra)
         setHabilitaBotao(arrayDeClasses(26, true))
       }
       return exibe(arrayDaPalavra)
     } else {
       let imagem = erros
-      if(imagem===forca5){
-        corDaPalavra='vermelho'
+      if (imagem === forca5) {
+        corDaPalavra = 'vermelho'
         setFimDeJogo(corDaPalavra)
         setHabilitaBotao(arrayDeClasses(26, true))
       }
@@ -105,16 +108,33 @@ export default function App() {
           break
       }
     }
-    if(corDaPalavra==='vermelho'){
+    if (corDaPalavra === 'vermelho') {
       return palavraSorteada
     }
     return palavraEscolhidaCriptografada
   }
 
+  function palavraChutada(palavra) {
+    let corDaPalavra
+    console.log(palavra)
+    console.log(palavraSorteada)
+    if (palavra === palavraSorteada) {
+      corDaPalavra = 'verde'
+      setFimDeJogo(corDaPalavra)
+      setHabilitaBotao(arrayDeClasses(26, true))
+    } else {
+      corDaPalavra = 'vermelho'
+      setFimDeJogo(corDaPalavra)
+      setHabilitaBotao(arrayDeClasses(26, true))
+      setErros(forca6)
+    }
+    return palavraSorteada
+  }
   return (
     <div>
       <Jogo iniciaJogo={iniciaJogo} imagem={erros} palavraEscolhida={palavraEscolhidaCriptografada} fimDeJogo={fimDeJogo} />
       <Letras arrayDeLetras={alfabeto} habilitaBotao={habilitaBotao} setHabilitaBotao={setHabilitaBotao} mudaPalavra={mudaPalavra} setPalavraEscolhidaCriptografada={setPalavraEscolhidaCriptografada} />
+      <Chute habilitaBotao={habilitaBotao} palavraChutada={palavraChutada} setPalavraEscolhidaCriptografada={setPalavraEscolhidaCriptografada}/>
     </div>
   );
 }

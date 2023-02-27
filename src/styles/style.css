@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Roboto:wght@400;700&display=swap');
 
 .jogo {
     width: 100vw;
@@ -41,7 +40,7 @@
 
 .jogo div p {
     color: #000;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -51,7 +50,7 @@
 
 .jogo div p.verde {
     color: #27AE60;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -61,7 +60,7 @@
 
 .jogo div p.vermelho {
     color: #FF0000;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 50px;
@@ -92,7 +91,7 @@
 .letras button.disabled {
     background-color: #9FAAB5;
     color: #39739D;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -101,10 +100,11 @@
     width: 40px;
     height: 40px;
 }
-.letras button.abled{
+
+.letras button.abled {
     background-color: #E1ECF4;
     color: #39739D;
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -112,4 +112,38 @@
     border-radius: 3px;
     width: 40px;
     height: 40px;
+}
+
+.chutar {
+    width: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto 50px auto;
+}
+
+.chutar p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.chutar input{
+    width: 353px;
+    height: 40px;
+}
+
+.chutar button{
+    width: 100px;
+    height: 40px;
+    background-color: #E1ECF4;
+    color: #39739D;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    border-radius: 3px;
 }
